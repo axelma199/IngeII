@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-sep-2018 18:49:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.Inge2.proyecto.mhuw.domain.Servicios" table="servicios" catalog="mydbinge" optimistic-lock="version">
+        <id name="pkIdServicio" type="java.lang.Integer">
+            <column name="Pk_IdServicio" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="int">
+            <column name="Nombre" not-null="true" />
+        </property>
+        <property name="tipoServicio" type="int">
+            <column name="TipoServicio" not-null="true" />
+        </property>
+        <property name="horario" type="timestamp">
+            <column name="Horario" length="19" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" not-null="true" />
+        </property>
+        <property name="cupos" type="java.lang.Integer">
+            <column name="Cupos" />
+        </property>
+        <property name="precio" type="java.lang.Double">
+            <column name="Precio" precision="22" scale="0" />
+        </property>
+        <property name="fechaCreacion" type="date">
+            <column name="FechaCreacion" length="10" />
+        </property>
+        <property name="IUltimoUsuario" type="java.lang.Integer">
+            <column name="I_Ultimo_Usuario" />
+        </property>
+        <property name="DFechaModificacion" type="date">
+            <column name="D_Fecha_modificacion" length="10" />
+        </property>
+        <set name="controlservicioses" table="controlservicios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Fk_IdServicio" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.Inge2.proyecto.mhuw.domain.Controlservicios" />
+        </set>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Fk_idServicio" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.Inge2.proyecto.mhuw.domain.Factura" />
+        </set>
+    </class>
+</hibernate-mapping>

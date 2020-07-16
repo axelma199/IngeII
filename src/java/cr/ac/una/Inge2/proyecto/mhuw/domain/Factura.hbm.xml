@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-sep-2018 18:49:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.Inge2.proyecto.mhuw.domain.Factura" table="factura" catalog="mydbinge" optimistic-lock="version">
+        <id name="pkIdFactura" type="java.lang.Integer">
+            <column name="Pk_IdFactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="cr.ac.una.Inge2.proyecto.mhuw.domain.Cliente" fetch="select">
+            <column name="Fk_IdCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servicios" class="cr.ac.una.Inge2.proyecto.mhuw.domain.Servicios" fetch="select">
+            <column name="Fk_idServicio" not-null="true" />
+        </many-to-one>
+        <property name="fechaCreacion" type="date">
+            <column name="Fecha_Creacion" length="10" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

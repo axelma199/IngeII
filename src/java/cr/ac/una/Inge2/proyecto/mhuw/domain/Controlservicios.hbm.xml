@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-sep-2018 18:49:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.Inge2.proyecto.mhuw.domain.Controlservicios" table="controlservicios" catalog="mydbinge" optimistic-lock="version">
+        <id name="pkIdControlServicio" type="java.lang.Integer">
+            <column name="Pk_IdControlServicio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="cr.ac.una.Inge2.proyecto.mhuw.domain.Cliente" fetch="select">
+            <column name="Fk_IdCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servicios" class="cr.ac.una.Inge2.proyecto.mhuw.domain.Servicios" fetch="select">
+            <column name="Fk_IdServicio" not-null="true" />
+        </many-to-one>
+        <property name="fechaCreacion" type="date">
+            <column name="Fecha_Creacion" length="10" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="java.lang.Integer">
+            <column name="Ultimo_Usuario" />
+        </property>
+        <property name="fechaModificacion" type="date">
+            <column name="Fecha_Modificacion" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
